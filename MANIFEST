@@ -5,4 +5,5 @@ t/01_basic.t
 test_keywords.txt
 test_exclude.txt
 test_log.txt
-
+MANIFEST
+Changes
