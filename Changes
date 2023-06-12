@@ -1,0 +1,5 @@
+Revision history for LogFilter
+
+0.01    June 12, 2023
+        - First version, released on an unsuspecting world.
+        - Provides basic log filtering with keyword and exclude file support.

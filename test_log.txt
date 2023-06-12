@@ -1,0 +1,4 @@
+This is an error line
+This is a warning line
+This is an ignore_this_error line
+This is a normal line

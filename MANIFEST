@@ -1,0 +1,8 @@
+Makefile.PL
+README.md
+lib/LogFilter.pm
+t/01_basic.t
+test_keywords.txt
+test_exclude.txt
+test_log.txt
+
