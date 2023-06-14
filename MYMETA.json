@@ -32,6 +32,7 @@
       },
       "runtime" : {
          "requires" : {
+            "File::Spec" : "0",
             "File::Tail" : "0",
             "IO::File" : "0",
             "perl" : "5.028"
@@ -46,6 +47,6 @@
          "web" : "https://github.com/kawamurashingo/OpenAIGPT4.git"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_serialization_backend" : "JSON::PP version 4.07"
 }

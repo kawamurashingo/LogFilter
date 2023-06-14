@@ -1,5 +1,9 @@
 Revision history for LogFilter
 
+0.05 2023-06-14
+    - Fixed issue with locating test data files in test script
+    - Used File::Spec in test script to generate full paths to test data files
+
 0.04 2023-06-14
     - Added error handling for file opening in the constructor of LogFilter.pm.
     - Fixed a bug where calling 'close' on an undefined filehandle would cause an error.
