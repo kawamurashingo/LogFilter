@@ -38,12 +38,9 @@ sub new {
         die "Could not open file '$exclude_file': $!";
     }
 
-    my $keywords_regex = join('|', map { quotemeta } @keywords);
-    my $exclude_regex = join('|', map { quotemeta } @exclude);
-
     my $self = {
-        keywords_regex => $keywords_regex,
-        exclude_regex => $exclude_regex,
+        keywords_regex => join('|', map { "(?:$_)" } @keywords),
+        exclude_regex => join('|', map { "(?:$_)" } @exclude),
         log_file => $log_file,
     };
 
