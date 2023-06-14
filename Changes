@@ -1,5 +1,10 @@
 Revision history for LogFilter
 
+0.04 2023-06-14
+    - Added error handling for file opening in the constructor of LogFilter.pm.
+    - Fixed a bug where calling 'close' on an undefined filehandle would cause an error.
+    - Tests updated to incorporate the changes.
+
 0.03 2023-06-14
     - Moved test files (test_keywords.txt, test_exclude.txt, test_log.txt) to the 't' directory.
     - This change ensures that the test script can correctly locate these files during test execution.
