@@ -21,8 +21,8 @@ WriteMakefile(
         resources => {
             repository => {
                 type => 'git',
-                url  => 'https://github.com/kawamurashingo/OpenAIGPT4.git',
-                web  => 'https://github.com/kawamurashingo/OpenAIGPT4.git',
+                url  => 'https://github.com/kawamurashingo/LogFilter.git',
+                web  => 'https://github.com/kawamurashingo/LogFilter.git',
             },
         },
     },
