@@ -1,5 +1,11 @@
 Revision history for LogFilter
 
+0.09 2023-06-14
+    - Fixed the test script to correctly handle relative file paths.
+    - Updated the test script to correctly start and kill the child process.
+    - Updated the test script to correctly capture and check the output of the filter method.
+    - Corrected the plan in the test script to accurately reflect the number of tests being run.
+
 0.08 2023-06-14
     - Fixed the issue where test log was created in the wrong directory.
     - Updated test cases to verify the contents of the log file directly, instead of relying on the filter method.

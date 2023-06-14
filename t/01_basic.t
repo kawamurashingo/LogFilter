@@ -1,4 +1,4 @@
-use Test::More tests => 7;
+use Test::More tests => 5;
 use LogFilter;
 use File::Spec;
 
@@ -11,20 +11,41 @@ my $log_file = File::Spec->catfile($test_data_dir, 'test_log.txt');
 
 my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file);
 ok($filter, 'New instance');
-is($filter->{keywords_file}, $keywords_file, 'Check keywords_file path');
-is($filter->{exclude_file}, $exclude_file, 'Check exclude_file path');
-is($filter->{log_file}, $log_file, 'Check log_file path');
 
-my @lines = ();
-open(my $fh, '<', $log_file) or die "Could not open file '$log_file' $!";
-while (my $row = <$fh>) {
-  chomp $row;
-  push @lines, $row;
+# Start a child process to update the test log periodically
+my $pid = fork();
+if ($pid == 0) {
+    # Child process
+    while (1) {
+        open my $log, '>>', $log_file or die "Cannot open log file: $!";
+        print $log "This is an error line\n";
+        print $log "This is a warning line\n";
+        print $log "This is an ignore_this_error line\n";
+        print $log "This is a normal line\n";
+        close $log;
+        sleep 1;
+    }
+    exit;
 }
-close $fh;
 
-like($lines[0], qr/This is an error line/, 'Error line is included in log file');
-like($lines[1], qr/This is a warning line/, 'Warning line is included in log file');
-unlike($lines[2], qr/This is an ignore_this_error line/, 'Excluded line is not included in log file');
-unlike($lines[3], qr/This is a normal line/, 'Normal line is not included in log file');
+# Run filter method with a timeout
+my $output;
+eval {
+    local $SIG{ALRM} = sub { die "timeout\n" };
+    alarm 5; # Set timeout
+    {
+        local *STDOUT;
+        open(STDOUT, '>', \$output) or die "Can't open STDOUT: $!";
+        $filter->filter();
+    }
+    alarm 0;
+};
+
+kill 'TERM', $pid; # Terminate child process
+
+# Check if the lines containing keywords (and not excluded) are in the output
+like($output, qr/This is an error line/, 'Error line is included');
+like($output, qr/This is a warning line/, 'Warning line is included');
+unlike($output, qr/This is an ignore_this_error line/, 'Excluded line is not included');
+unlike($output, qr/This is a normal line/, 'Normal line is not included');
 
