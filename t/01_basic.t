@@ -37,6 +37,7 @@ eval {
         local *STDOUT;
         open(STDOUT, '>', \$output) or die "Can't open STDOUT: $!";
         $filter->filter();
+        close(STDOUT);
     }
     alarm 0;
 };
@@ -49,3 +50,4 @@ like($output, qr/This is a warning line/, 'Warning line is included');
 unlike($output, qr/This is an ignore_this_error line/, 'Excluded line is not included');
 unlike($output, qr/This is a normal line/, 'Normal line is not included');
 
+done_testing();
