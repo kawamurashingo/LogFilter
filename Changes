@@ -1,5 +1,9 @@
 Revision history for LogFilter
 
+0.06 2023-06-14
+    - Fixed a bug in test script where log file was being created in unexpected location due to use of relative path.
+    - Switched to using absolute path for creating and updating log file in the test script.
+
 0.05 2023-06-14
     - Fixed issue with locating test data files in test script
     - Used File::Spec in test script to generate full paths to test data files
