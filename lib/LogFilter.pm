@@ -3,7 +3,7 @@ package LogFilter;
 use strict;
 use warnings;
 
-our $VERSION = '0.05'; # Incremented version number
+our $VERSION = '0.06'; # Incremented version number
 
 use File::Tail;
 use IO::File;

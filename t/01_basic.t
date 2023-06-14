@@ -17,7 +17,7 @@ my $pid = fork();
 if ($pid == 0) {
     # Child process
     while (1) {
-        open my $log, '>>', 'test_log.txt';
+        open my $log, '>>', $log_file; # Use the absolute path of the log file
         print $log "This is an error line\n";
         print $log "This is a warning line\n";
         print $log "This is an ignore_this_error line\n";
