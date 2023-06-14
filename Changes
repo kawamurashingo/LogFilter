@@ -1,5 +1,9 @@
 Revision history for LogFilter
 
+0.03 2023-06-14
+    - Moved test files (test_keywords.txt, test_exclude.txt, test_log.txt) to the 't' directory.
+    - This change ensures that the test script can correctly locate these files during test execution.
+
 0.02 2023-06-14
     - Modified test file (01_basic.t) to handle real-time log monitoring.
       Now, the test script starts a child process to update the test log periodically. 
