@@ -1,5 +1,11 @@
 Revision history for LogFilter
 
-0.01    June 12, 2023
-        - First version, released on an unsuspecting world.
-        - Provides basic log filtering with keyword and exclude file support.
+0.02 2023-06-14
+    - Modified test file (01_basic.t) to handle real-time log monitoring.
+      Now, the test script starts a child process to update the test log periodically. 
+      The filter method in the test is given a timeout, and it terminates after a set period of time.
+    - This change allows us to perform real-time log analysis while ensuring that the tests don't run indefinitely.
+
+0.01 2023-06-12
+    - Initial release. 
+    - Basic log filtering capabilities using a keywords file, an exclude file, and a log file.
