@@ -10,6 +10,7 @@ WriteMakefile(
         'perl'          => '5.028',
         'File::Tail'    => 0,
         'IO::File'      => 0,
+        'File::Spec'    => 0,
     },
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
      ? ('LICENSE'=> 'perl')

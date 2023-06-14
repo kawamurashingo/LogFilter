@@ -1,7 +1,15 @@
 use Test::More tests => 5;
 use LogFilter;
+use File::Spec;
 
-my $filter = LogFilter->new('test_keywords.txt', 'test_exclude.txt', 'test_log.txt');
+my ($vol, $dir, $file) = File::Spec->splitpath(__FILE__);
+my $test_data_dir = File::Spec->catdir($dir);
+
+my $keywords_file = File::Spec->catfile($test_data_dir, 'test_keywords.txt');
+my $exclude_file = File::Spec->catfile($test_data_dir, 'test_exclude.txt');
+my $log_file = File::Spec->catfile($test_data_dir, 'test_log.txt');
+
+my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file);
 ok($filter, 'New instance');
 
 # Start a child process to update the test log periodically
