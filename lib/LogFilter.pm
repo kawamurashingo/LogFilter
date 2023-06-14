@@ -3,7 +3,7 @@ package LogFilter;
 use strict;
 use warnings;
 
-our $VERSION = '0.03'; # Incremented version number
+our $VERSION = '0.04'; # Incremented version number
 
 use File::Tail;
 use IO::File;
@@ -14,23 +14,29 @@ sub new {
     my @keywords;
     my @exclude;
 
+    # Open and read keywords file
     my $fh = IO::File->new($keywords_file, 'r');
     if (defined $fh) {
         while (my $keyword = $fh->getline) {
             chomp $keyword;
             push @keywords, $keyword;
         }
+        $fh->close;
+    } else {
+        die "Could not open file '$keywords_file': $!";
     }
-    $fh->close;
 
+    # Open and read exclude file
     $fh = IO::File->new($exclude_file, 'r');
     if (defined $fh) {
         while (my $exclude = $fh->getline) {
             chomp $exclude;
             push @exclude, $exclude;
         }
+        $fh->close;
+    } else {
+        die "Could not open file '$exclude_file': $!";
     }
-    $fh->close;
 
     my $self = {
         keywords_regex => join('|', map { "(?:$_)" } @keywords),
