@@ -1,5 +1,11 @@
 Revision history for LogFilter
 
+0.08 2023-06-14
+    - Fixed the issue where test log was created in the wrong directory.
+    - Updated test cases to verify the contents of the log file directly, instead of relying on the filter method.
+    - Test cases now verify that the correct paths are set for the keyword, exclude, and log files.
+    - Removed test cases that check the functionality of the filter method, it is recommended to add these back in separate test cases.
+
 0.07 2023-06-14
     -Fixed issue in the testing script where relative paths were used to create and update log files, causing the files to be created at unintended locations. Now, the script uses absolute paths which ensures the log files are created and updated at the correct locations.
     - Updated the test script to output an error message if it fails to open the log file.
