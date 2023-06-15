@@ -1,4 +1,4 @@
-use Test::More tests => 5;
+use Test::More;
 use LogFilter;
 use File::Spec;
 
