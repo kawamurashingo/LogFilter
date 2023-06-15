@@ -1,4 +1,7 @@
 Revision history for LogFilter
+0.10    2023-06-15
+        - Added 'interval' parameter to constructor for setting read interval in File::Tail
+        - Default read interval is 1 second if no 'interval' parameter is provided
 
 0.09 2023-06-14
     - Fixed the test script to correctly handle relative file paths.
