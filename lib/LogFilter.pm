@@ -3,13 +3,13 @@ package LogFilter;
 use strict;
 use warnings;
 
-our $VERSION = '0.09'; # Incremented version number
+our $VERSION = '0.10'; # Incremented version number
 
 use File::Tail;
 use IO::File;
 
 sub new {
-    my ($class, $keywords_file, $exclude_file, $log_file) = @_;
+    my ($class, $keywords_file, $exclude_file, $log_file, $interval) = @_;
 
     my @keywords;
     my @exclude;
@@ -42,6 +42,7 @@ sub new {
         keywords_regex => join('|', map { "(?:$_)" } @keywords),
         exclude_regex => join('|', map { "(?:$_)" } @exclude),
         log_file => $log_file,
+        interval => $interval || 1, # default interval is 1 second
     };
 
     return bless $self, $class;
@@ -50,7 +51,7 @@ sub new {
 sub filter {
     my ($self) = @_;
 
-    my $file = File::Tail->new($self->{log_file});
+    my $file = File::Tail->new(name=>$self->{log_file}, interval=>$self->{interval});
     while (defined(my $line = $file->read)) {
         if ($line =~ /$self->{keywords_regex}/ && $line !~ /$self->{exclude_regex}/) {
             print $line;
