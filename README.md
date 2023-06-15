@@ -11,11 +11,16 @@ Here is a basic usage example:
 ```perl
 use LogFilter;
 
-my $filter = LogFilter->new('keywords.txt', 'exclude.txt', '/var/log/syslog');
+my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
 $filter->filter();
 ```
 
-In this example, keywords.txt is a file with one keyword per line. These are the phrases that we are interested in. exclude.txt is similar, but it contains phrases that we want to exclude from the output. /var/log/syslog is the log file that we want to filter.
+The new function takes four arguments:
+
+1. A file containing keywords, one per line.
+2. A file containing exclusion patterns, one per line.
+3. The log file to be filtered.
+4. The interval (in seconds) at which the log file should be read.
 
 ## Installation
 
@@ -27,6 +32,18 @@ perl Makefile.PL
 make
 make test
 make install
+```
+
+With CPAN:
+
+```perl
+cpan LogFilter
+```
+
+With CPANM:
+
+```perl
+cpanm LogFilter
 ```
 
 ## Author

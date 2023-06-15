@@ -59,48 +59,63 @@ sub filter {
     }
 }
 
+1;
+
 =head1 NAME
 
-LogFilter - A simple log filter
+LogFilter - Filter logs based on keywords and exclusion patterns
+
+=head1 VERSION
+
+Version 0.10
 
 =head1 SYNOPSIS
 
     use LogFilter;
 
-    my $filter = LogFilter->new('keywords.txt', 'exclude.txt', '/var/log/syslog');
-    $filter->filter();
+    my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
+
+    $filter->filter;
 
 =head1 DESCRIPTION
 
-This module provides a simple way to filter log files. It takes as input a keywords file, an exclude file and the log file to be filtered.
+LogFilter is a module for filtering log files based on keywords and exclusion patterns. It reads the log file line by line and if a line matches any keyword but does not match any exclusion pattern, it is printed to the console.
 
 =head1 METHODS
 
-=over
+=head2 new
 
-=item new($keywords_file, $exclude_file, $log_file)
+    my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
 
-The constructor. It takes three arguments: the keywords file, the exclude file, and the log file. It returns a new instance of LogFilter.
+Creates a new LogFilter object. Takes four arguments:
 
-=item filter()
+=over 4
 
-This method filters the log file, printing lines that match any of the keywords and do not match any of the exclude phrases.
+=item * A file containing keywords, one per line
+
+=item * A file containing exclusion patterns, one per line
+
+=item * The log file to be filtered
+
+=item * The interval (in seconds) at which the log file should be read. Default is 1 if not specified.
 
 =back
 
+=head2 filter
+
+    $filter->filter;
+
+Starts the filtering process. Reads the log file at the specified interval and prints lines that match any keyword and do not match any exclusion pattern.
+
 =head1 AUTHOR
 
-Kawamura Shingo <pannakoota@gmail.com>
+Kawamura Shingo, C<< pannakoota@gmail.com >>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2023 by Kawamura Shingo 
+Copyright 2023 Kawamura Shingo.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.28.1 or,
-at your option, any later version of Perl 5 you may have available.
+This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
 =cut
-
-1;
 
