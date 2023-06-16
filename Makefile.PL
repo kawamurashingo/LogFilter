@@ -1,3 +1,4 @@
+use File::ShareDir::Install;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
