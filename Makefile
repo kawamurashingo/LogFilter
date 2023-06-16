@@ -15,10 +15,12 @@
 #     AUTHOR => [q[Kawamura Shingo <pannakoota@gmail.com>]]
 #     BUILD_REQUIRES => {  }
 #     CONFIGURE_REQUIRES => {  }
+#     File::ShareDir::Install => q[0.06]
 #     LICENSE => q[perl]
 #     META_MERGE => { meta-spec=>{ version=>q[2] }, resources=>{ repository=>{ type=>q[git], url=>q[https://github.com/kawamurashingo/LogFilter.git], web=>q[https://github.com/kawamurashingo/LogFilter.git] } } }
 #     NAME => q[LogFilter]
 #     PREREQ_PM => { File::Spec=>q[0], File::Tail=>q[0], IO::File=>q[0], perl=>q[5.028] }
+#     ShareDir => q[share]
 #     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[lib/LogFilter.pm]
 
@@ -60,11 +62,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = LogFilter
 NAME_SYM = LogFilter
-VERSION = 0.10
+VERSION = 0.11
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_10
+VERSION_SYM = 0_11
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.10
+XS_VERSION = 0.11
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -261,7 +263,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = LogFilter
-DISTVNAME = LogFilter-0.10
+DISTVNAME = LogFilter-0.11
 
 
 # --- MakeMaker macro section:
@@ -510,7 +512,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  perl: '\''5.028'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  repository: https://github.com/kawamurashingo/LogFilter.git' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''0.10'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''0.11'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'x_serialization_backend: '\''CPAN::Meta::YAML version 0.018'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
@@ -563,7 +565,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '         "web" : "https://github.com/kawamurashingo/LogFilter.git"' >> META_new.json
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "0.10",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.11",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 4.07"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
@@ -873,7 +875,7 @@ testdb_static :: static pure_all
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="LogFilter" VERSION="0.10">' > LogFilter.ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="LogFilter" VERSION="0.11">' > LogFilter.ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A simple log filter</ABSTRACT>' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Kawamura Shingo &lt;pannakoota@gmail.com&gt;</AUTHOR>' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> LogFilter.ppd
