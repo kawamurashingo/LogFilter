@@ -11,7 +11,7 @@ WriteMakefile(
     AUTHOR           => 'Kawamura Shingo <pannakoota@gmail.com>',
     LICENSE          => 'artistic_2',
     PREREQ_PM        => {
-        'perl'                    => '5.028',
+        'perl'                    => '5.026',
         'File::Tail'              => 0,
         'IO::File'                => 0,
         'File::Spec'              => 0,
