@@ -38,5 +38,4 @@ WriteMakefile(
     CONFIGURE_REQUIRES => {
         'File::ShareDir::Install' => 0.13,
     },
-    EXE_FILES => ['script/log_filter'],
 );
