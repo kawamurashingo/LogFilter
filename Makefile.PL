@@ -8,9 +8,12 @@ WriteMakefile(
     AUTHOR           => 'Kawamura Shingo <pannakoota@gmail.com>',
     LICENSE          => 'artistic_2',
     PREREQ_PM           => {
-        'perl'          => '5.028',
-        'File::Tail'    => 0,
-        'IO::File'      => 0,
+        'perl'                    => '5.028',
+        'File::Tail'              => 0,
+        'IO::File'                => 0,
+        'File::Spec'              => 0,
+        'File::ShareDir'          => '1.116',
+        'File::ShareDir::Install' => '0.13',
     },
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
      ? ('LICENSE'=> 'perl')
@@ -26,7 +29,6 @@ WriteMakefile(
             },
         },
     },
-    'File::ShareDir::Install' => '0.06',
+    'File::ShareDir::Install' => '0.13',
     'ShareDir' => 'share',
 );
-
