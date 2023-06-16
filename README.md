@@ -34,18 +34,6 @@ make test
 make install
 ```
 
-With CPAN:
-
-```perl
-cpan LogFilter
-```
-
-With CPANM:
-
-```perl
-cpanm LogFilter
-```
-
 ## Author
 
 Kawamura Shingo (pannakoota@gmail.com)
