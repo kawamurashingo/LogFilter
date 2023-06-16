@@ -1,12 +1,18 @@
 Revision history for LogFilter
-0.11    2023-06-17
-        - Moved test files to the 'share' directory for proper file referencing
-        - Updated the 'Makefile.PL' for File::ShareDir::Install integration
-        - Updated tests to use File::ShareDir to find test files
+0.12 2023-06-17
+    - Added documentation (POD)
+    - Changed the way how files in the 'share' directory are used
+    - Fixed issue with File::ShareDir::Install and ShareDir parameters in Makefile.PL
+    - Added installation instructions
 
-0.10    2023-06-15
-        - Added 'interval' parameter to constructor for setting read interval in File::Tail
-        - Default read interval is 1 second if no 'interval' parameter is provided
+0.11 2023-06-17
+    - Moved test files to the 'share' directory for proper file referencing
+    - Updated the 'Makefile.PL' for File::ShareDir::Install integration
+    - Updated tests to use File::ShareDir to find test files
+
+0.10 2023-06-15
+    - Added 'interval' parameter to constructor for setting read interval in File::Tail
+    - Default read interval is 1 second if no 'interval' parameter is provided
 
 0.09 2023-06-14
     - Fixed the test script to correctly handle relative file paths.

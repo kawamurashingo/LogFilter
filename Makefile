@@ -13,14 +13,12 @@
 
 #     ABSTRACT => q[A simple log filter]
 #     AUTHOR => [q[Kawamura Shingo <pannakoota@gmail.com>]]
-#     BUILD_REQUIRES => {  }
-#     CONFIGURE_REQUIRES => {  }
-#     File::ShareDir::Install => q[0.06]
+#     BUILD_REQUIRES => { File::ShareDir::Install=>q[0.13] }
+#     CONFIGURE_REQUIRES => { File::ShareDir::Install=>q[0.13] }
 #     LICENSE => q[perl]
 #     META_MERGE => { meta-spec=>{ version=>q[2] }, resources=>{ repository=>{ type=>q[git], url=>q[https://github.com/kawamurashingo/LogFilter.git], web=>q[https://github.com/kawamurashingo/LogFilter.git] } } }
 #     NAME => q[LogFilter]
-#     PREREQ_PM => { File::Spec=>q[0], File::Tail=>q[0], IO::File=>q[0], perl=>q[5.028] }
-#     ShareDir => q[share]
+#     PREREQ_PM => { File::ShareDir=>q[1.116], File::ShareDir::Install=>q[0.13], File::Spec=>q[0], File::Tail=>q[0], IO::File=>q[0], perl=>q[5.026] }
 #     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[lib/LogFilter.pm]
 
@@ -62,11 +60,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = LogFilter
 NAME_SYM = LogFilter
-VERSION = 0.11
+VERSION = 0.12
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_11
+VERSION_SYM = 0_12
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.11
+XS_VERSION = 0.12
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -263,7 +261,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = LogFilter
-DISTVNAME = LogFilter-0.11
+DISTVNAME = LogFilter-0.12
 
 
 # --- MakeMaker macro section:
@@ -491,9 +489,9 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  - '\''Kawamura Shingo <pannakoota@gmail.com>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) '  File::ShareDir::Install: '\''0.13'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) '  File::ShareDir::Install: '\''0.13'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
 	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 7.64, CPAN::Meta::Converter version 2.150010'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license: perl' >> META_new.yml
@@ -506,13 +504,15 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - inc' >> META_new.yml
 	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  File::ShareDir: '\''1.116'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) '  File::ShareDir::Install: '\''0.13'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  File::Spec: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  File::Tail: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  IO::File: '\''0'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) '  perl: '\''5.028'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) '  perl: '\''5.026'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  repository: https://github.com/kawamurashingo/LogFilter.git' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''0.11'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''0.12'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'x_serialization_backend: '\''CPAN::Meta::YAML version 0.018'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
@@ -540,20 +540,22 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '   "prereqs" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '      "build" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
-	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : "0"' >> META_new.json
+	$(NOECHO) $(ECHO) '            "File::ShareDir::Install" : "0.13"' >> META_new.json
 	$(NOECHO) $(ECHO) '         }' >> META_new.json
 	$(NOECHO) $(ECHO) '      },' >> META_new.json
 	$(NOECHO) $(ECHO) '      "configure" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
-	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : "0"' >> META_new.json
+	$(NOECHO) $(ECHO) '            "File::ShareDir::Install" : "0.13"' >> META_new.json
 	$(NOECHO) $(ECHO) '         }' >> META_new.json
 	$(NOECHO) $(ECHO) '      },' >> META_new.json
 	$(NOECHO) $(ECHO) '      "runtime" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "File::ShareDir" : "1.116",' >> META_new.json
+	$(NOECHO) $(ECHO) '            "File::ShareDir::Install" : "0.13",' >> META_new.json
 	$(NOECHO) $(ECHO) '            "File::Spec" : "0",' >> META_new.json
 	$(NOECHO) $(ECHO) '            "File::Tail" : "0",' >> META_new.json
 	$(NOECHO) $(ECHO) '            "IO::File" : "0",' >> META_new.json
-	$(NOECHO) $(ECHO) '            "perl" : "5.028"' >> META_new.json
+	$(NOECHO) $(ECHO) '            "perl" : "5.026"' >> META_new.json
 	$(NOECHO) $(ECHO) '         }' >> META_new.json
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
@@ -565,7 +567,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '         "web" : "https://github.com/kawamurashingo/LogFilter.git"' >> META_new.json
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "0.11",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.12",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 4.07"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
@@ -875,10 +877,12 @@ testdb_static :: static pure_all
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="LogFilter" VERSION="0.11">' > LogFilter.ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="LogFilter" VERSION="0.12">' > LogFilter.ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A simple log filter</ABSTRACT>' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Kawamura Shingo &lt;pannakoota@gmail.com&gt;</AUTHOR>' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> LogFilter.ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::ShareDir" VERSION="1.116" />' >> LogFilter.ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::ShareDir::Install" VERSION="0.13" />' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Spec" />' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Tail" />' >> LogFilter.ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="IO::File" />' >> LogFilter.ppd
