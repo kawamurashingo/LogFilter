@@ -22,20 +22,22 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "File::ShareDir::Install" : "0.13"
          }
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "File::ShareDir::Install" : "0.13"
          }
       },
       "runtime" : {
          "requires" : {
+            "File::ShareDir" : "1.116",
+            "File::ShareDir::Install" : "0.13",
             "File::Spec" : "0",
             "File::Tail" : "0",
             "IO::File" : "0",
-            "perl" : "5.028"
+            "perl" : "5.026"
          }
       }
    },
@@ -47,6 +49,6 @@
          "web" : "https://github.com/kawamurashingo/LogFilter.git"
       }
    },
-   "version" : "0.11",
+   "version" : "0.12",
    "x_serialization_backend" : "JSON::PP version 4.07"
 }
