@@ -3,7 +3,7 @@ package LogFilter;
 use strict;
 use warnings;
 
-our $VERSION = '0.11'; # Incremented version number
+our $VERSION = '0.12'; # Incremented version number
 
 use File::Tail;
 use IO::File;
@@ -63,59 +63,67 @@ sub filter {
 
 =head1 NAME
 
-LogFilter - Filter logs based on keywords and exclusion patterns
-
-=head1 VERSION
-
-Version 0.10
+LogFilter - A simple log filtering module
 
 =head1 SYNOPSIS
 
-    use LogFilter;
+  use LogFilter;
 
-    my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
+  my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
 
-    $filter->filter;
+  $filter->filter;
 
 =head1 DESCRIPTION
 
-LogFilter is a module for filtering log files based on keywords and exclusion patterns. It reads the log file line by line and if a line matches any keyword but does not match any exclusion pattern, it is printed to the console.
+The LogFilter module provides an easy way to filter logs based on keywords and exclude words. 
+It continuously reads a log file and prints lines that contain any of the provided keywords 
+but do not contain any of the provided exclude words.
+
+=head1 INSTALLATION
+
+You can install this module:
+  
+  git clone https://github.com/kawamurashingo/LogFilter.git
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 =head1 METHODS
 
-=head2 new
+=over 4
+
+=item new
+
+Creates a new LogFilter object.
 
     my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
 
-Creates a new LogFilter object. Takes four arguments:
+Arguments:
 
-=over 4
+- C<$keywords_file>: a file containing keywords, one per line.
+- C<$exclude_file>: a file containing words to exclude, one per line.
+- C<$log_file>: the log file to read.
+- C<$interval>: the interval at which to read the log file, in seconds.
 
-=item * A file containing keywords, one per line
+=item filter
 
-=item * A file containing exclusion patterns, one per line
-
-=item * The log file to be filtered
-
-=item * The interval (in seconds) at which the log file should be read. Default is 1 if not specified.
-
-=back
-
-=head2 filter
+Starts filtering the log file.
 
     $filter->filter;
 
-Starts the filtering process. Reads the log file at the specified interval and prints lines that match any keyword and do not match any exclusion pattern.
+This method will keep running until the program is terminated.
+
+=back
 
 =head1 AUTHOR
 
-Kawamura Shingo, C<< pannakoota@gmail.com >>
+Kawamura Shingo <pannakoota@gmail.com>
 
-=head1 LICENSE AND COPYRIGHT
+=head1 LICENSE
 
-Copyright 2023 Kawamura Shingo.
-
-This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
 
