@@ -26,4 +26,7 @@ WriteMakefile(
             },
         },
     },
+    'File::ShareDir::Install' => '0.06',
+    'ShareDir' => 'share',
 );
+

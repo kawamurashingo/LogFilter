@@ -1,13 +1,12 @@
 use Test::More;
 use LogFilter;
-use File::Spec;
+use File::ShareDir 'module_dir';
 
-my ($vol, $dir, $file) = File::Spec->splitpath(__FILE__);
-my $test_data_dir = File::Spec->catdir($dir);
+my $test_data_dir = module_dir('LogFilter');
 
-my $keywords_file = File::Spec->catfile($test_data_dir, 'test_keywords.txt');
-my $exclude_file = File::Spec->catfile($test_data_dir, 'test_exclude.txt');
-my $log_file = File::Spec->catfile($test_data_dir, 'test_log.txt');
+my $keywords_file = "$test_data_dir/test_keywords.txt";
+my $exclude_file = "$test_data_dir/test_exclude.txt";
+my $log_file = "$test_data_dir/test_log.txt";
 
 my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file);
 ok($filter, 'New instance');
@@ -51,3 +50,4 @@ unlike($output, qr/This is an ignore_this_error line/, 'Excluded line is not inc
 unlike($output, qr/This is a normal line/, 'Normal line is not included');
 
 done_testing();
+
