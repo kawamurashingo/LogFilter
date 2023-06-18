@@ -1,4 +1,8 @@
 Revision history for LogFilter
+0.13  2023-06-18
+    - Added ability to provide interval for log file reading
+    - Added POD documentation with example usage
+
 0.12 2023-06-17
     - Added documentation (POD)
     - Changed the way how files in the 'share' directory are used

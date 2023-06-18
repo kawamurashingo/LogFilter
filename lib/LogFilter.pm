@@ -3,7 +3,7 @@ package LogFilter;
 use strict;
 use warnings;
 
-our $VERSION = '0.12'; # Incremented version number
+our $VERSION = '0.13'; # Incremented version number
 
 use File::Tail;
 use IO::File;
@@ -115,6 +115,45 @@ Starts filtering the log file.
 This method will keep running until the program is terminated.
 
 =back
+
+=head1 EXAMPLE
+
+Here is an example of how you might use this module:
+
+  #!/usr/bin/perl
+
+  use strict;
+  use warnings;
+
+  use LogFilter;
+
+  my $keywords_file = '/path/to/keywords.txt';
+  my $exclude_file = '/path/to/exclude.txt';
+  my $log_file = '/path/to/my.log';
+  my $interval = 1; # seconds
+
+  my $filter = LogFilter->new($keywords_file, $exclude_file, $log_file, $interval);
+
+  $filter->filter;
+
+This script will now continuously print lines from C<my.log> that contain any of the keywords in C<keywords.txt>,
+but do not contain any of the words in C<exclude.txt>.
+
+The C<keywords.txt> and C<exclude.txt> files should contain one word per line. For example:
+
+  # keywords.txt
+  error
+  warning
+  failed
+
+  # exclude.txt
+  foobar
+
+This will print lines that contain "error", "warning", or "failed", unless the line also contains "foobar".
+
+=head1 SEE ALSO
+
+L<File::Tail>, L<IO::File>
 
 =head1 AUTHOR
 
