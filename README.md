@@ -38,6 +38,18 @@ make install
 
 Kawamura Shingo (pannakoota@gmail.com)
 
+## Dependencies
+
+This module depends on the following Perl modules:
+
+- File::ShareDir
+- File::ShareDir::Install
+- File::Spec
+- File::Tail
+- IO::File
+
 ## License
 
-This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.28.1 or, at your option, any later version of Perl 5 you may have available.
+This module is distributed under the terms of the Artistic License 2.0.
+
+Please see [LICENSE](https://opensource.org/licenses/Artistic-2.0) for more details.
